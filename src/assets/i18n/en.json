@@ -45,5 +45,15 @@
   "label_chunithmNewAvatarAccessoryList":"Chunithm New Avatar Accessory List:",
   "label_CleanCache": "Clean Cache",
   "label_warning": "Warning!",
-  "label_importWarning": "While this could work, it is not recommended to use this feature."
+  "label_importWarning": "While this could work, it is not recommended to use this feature.",
+  "label_accessCode": "Access Code",
+  "label_accessCodeDescription": "20-digit number of your card",
+  "label_serverEndpoint": "API Server endpoint",
+  "label_login": "Login",
+  "label_level": "Level",
+  "label_friendshipExp": "Friendship Exp",
+  "label_playCount": "Play Count",
+  "label_skill": "Skill",
+  "label_levelUp": "LevelUp",
+  "label_overview": "Overview"
 }

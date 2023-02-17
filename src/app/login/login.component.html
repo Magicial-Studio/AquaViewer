@@ -1,19 +1,19 @@
-<h1 class="mat-display-1">{{'label_applicationName' | translate}}</h1>
+<h1 class="mat-display-1">{{'label_applicationName'|translate}}</h1>
 <mat-card class="login-card">
   <mat-card-content>
     <form (ngSubmit)="onSubmit()" [formGroup]="loginForm">
 
       <mat-form-field class="full-width">
-        <mat-label>Access Code</mat-label>
-        <mat-hint>20-digit number of your card</mat-hint>
+        <mat-label>{{"label_accessCode"|translate}}</mat-label>
+        <mat-hint>{{"label_accessCodeDescription"|translate}}</mat-hint>
         <input formControlName="accessCode" matInput required type="text">
       </mat-form-field>
       <mat-form-field class="full-width">
-        <mat-label>API Server endpoint</mat-label>
+        <mat-label>{{"label_serverEndpoint"|translate}}</mat-label>
         <input formControlName="apiServer" matInput required type="text">
 
       </mat-form-field>
-      <button [disabled]="!loginForm.valid" mat-raised-button type="submit">Login</button>
+      <button [disabled]="!loginForm.valid" mat-raised-button type="submit">{{"label_login"|translate}}</button>
     </form>
   </mat-card-content>
 </mat-card>

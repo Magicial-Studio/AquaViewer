@@ -33,32 +33,34 @@ import {V1SongDetailComponent} from './v1-song-detail/v1-song-detail.component';
 import {V1SongPlaylogComponent} from './v1-song-playlog/v1-song-playlog.component';
 import {NgxPaginationModule} from 'ngx-pagination';
 import {ToolsModule} from '../../../util/tools.module';
+import {TranslateModule} from '@ngx-translate/core';
 
 @NgModule({
-    imports: [
-        CommonModule,
-        FormsModule,
-        V1Routes,
-        MatFormFieldModule,
-        MatCardModule,
-        MatButtonModule,
-        MatToolbarModule,
-        MatSidenavModule,
-        MatIconModule,
-        MatListModule,
-        MatInputModule,
-        MatSelectModule,
-        ReactiveFormsModule,
-        MatMenuModule,
-        MatTableModule,
-        MatPaginatorModule,
-        MatSortModule,
-        MatDialogModule,
-        MatSnackBarModule,
-        FlexLayoutModule,
-        NgxPaginationModule,
-        ToolsModule
-    ],
+  imports: [
+    CommonModule,
+    FormsModule,
+    V1Routes,
+    MatFormFieldModule,
+    MatCardModule,
+    MatButtonModule,
+    MatToolbarModule,
+    MatSidenavModule,
+    MatIconModule,
+    MatListModule,
+    MatInputModule,
+    MatSelectModule,
+    ReactiveFormsModule,
+    MatMenuModule,
+    MatTableModule,
+    MatPaginatorModule,
+    MatSortModule,
+    MatDialogModule,
+    MatSnackBarModule,
+    FlexLayoutModule,
+    NgxPaginationModule,
+    ToolsModule,
+    TranslateModule
+  ],
     declarations: [
         V1ProfileComponent,
         V1RatingComponent,

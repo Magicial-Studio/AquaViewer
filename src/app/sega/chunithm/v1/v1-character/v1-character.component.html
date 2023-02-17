@@ -1,4 +1,4 @@
-<h1 class="mat-display-1">Character</h1>
+<h1 class="mat-display-1">{{"label_character"|translate}}</h1>
 
 <mat-card
   *ngFor="let item of characters | async | paginate: { id: 'server', itemsPerPage: 10, currentPage: currentPage, totalItems: totalElements }">
@@ -13,19 +13,19 @@
       <div class="content">
         <table class="zebra">
           <tr>
-            <th>Level</th>
+            <th>{{"label_level"|translate}}</th>
             <td>{{item.level}}</td>
           </tr>
           <tr>
-            <th>Friendship Exp</th>
+            <th>{{"label_friendshipExp"|translate}}</th>
             <td>{{item.friendshipExp}}</td>
           </tr>
           <tr>
-            <th>Play Count</th>
+            <th>{{"label_playCount"|translate}}</th>
             <td>{{item.playCount}}</td>
           </tr>
           <tr>
-            <th>Skill</th>
+            <th>{{"label_skill"|translate}}</th>
             <td>{{item.skillInfo ? item.skillInfo.name : 'SkillId: ' + item.skillId}}<br>
               {{item.skillInfo ? item.skillInfo.category : ''}}</td>
           </tr>
@@ -37,7 +37,7 @@
     <div fxFlex></div>
     <button (click)="levelUp(item.characterId, item.level)"
             mat-button>
-      LevelUp
+      {{"label_levelUp"|translate}}
     </button>
   </mat-card-actions>
 </mat-card>
