@@ -1,0 +1,22 @@
+{
+  "label_applicationName": "Aqua Viewer",
+  "label_welcome": "Welcome to Aqua Viewer",
+  "label_profile": "Profile",
+  "label_battlePoint": "Battle Point",
+  "label_rating":"Rating",
+  "label_playRecord":"Play Record",
+  "label_musicList":"Music List",
+  "label_card":"Card",
+  "label_rivalList":"Rival List",
+  "label_setting":"Setting",
+  "label_character":"Character",
+  "label_userBox":"User Box",
+  "label_pvRecord":"Pv Record",
+  "label_pvList":"Pv List",
+  "label_recentPlay":"Recent Play",
+  "label_management":"Management",
+  "label_modules":"Modules",
+  "label_customizes":"Customizes",
+  "label_dashboard":"Dashboard",
+  "label_import":"Import"
+}

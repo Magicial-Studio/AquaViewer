@@ -1,4 +1,4 @@
-<h1 class="mat-display-1">Welcome!</h1>
+<h1 class="mat-display-1">{{'label_applicationName' | translate}}</h1>
 <mat-card class="login-card">
   <mat-card-content>
     <form (ngSubmit)="onSubmit()" [formGroup]="loginForm">
@@ -11,7 +11,7 @@
       <mat-form-field class="full-width">
         <mat-label>API Server endpoint</mat-label>
         <input formControlName="apiServer" matInput required type="text">
-        
+
       </mat-form-field>
       <button [disabled]="!loginForm.valid" mat-raised-button type="submit">Login</button>
     </form>

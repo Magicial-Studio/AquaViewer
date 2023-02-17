@@ -1,0 +1,22 @@
+{
+  "label_applicationName": "Aqua Viewer",
+  "label_welcome": "欢迎使用Aqua Viewer",
+  "label_profile": "玩家档案",
+  "label_battlePoint": "对战点数",
+  "label_rating":"游戏评级",
+  "label_playRecord":"游玩记录",
+  "label_musicList":"歌曲列表",
+  "label_card":"卡牌查看",
+  "label_rivalList":"对手列表",
+  "label_setting":"游戏设定",
+  "label_character":"角色设定",
+  "label_userBox":"User Box",
+  "label_pvRecord":"PV 纪录",
+  "label_pvList":"PV 列表",
+  "label_recentPlay":"最近游玩",
+  "label_management":"服务器管理",
+  "label_modules":"模型列表",
+  "label_customizes":"饰品列表",
+  "label_dashboard":"服务器状态",
+  "label_import":"导入游戏数据"
+}

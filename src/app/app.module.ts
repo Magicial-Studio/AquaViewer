@@ -19,7 +19,7 @@ import {MatDialogModule} from '@angular/material/dialog';
 import {MessageModule} from './message/message.module';
 import {DashboardModule} from './dashboard/dashboard.module';
 import {LoginModule} from './login/login.module';
-import {HTTP_INTERCEPTORS, HttpClientModule} from '@angular/common/http';
+import {HTTP_INTERCEPTORS, HttpClientModule, HttpClient} from '@angular/common/http';
 import {DivaModule} from './sega/diva/diva.module';
 import {V1Module} from './sega/chunithm/v1/v1.module';
 import {V2Module} from './sega/chunithm/v2/v2.module';
@@ -34,6 +34,12 @@ import {ImporterModule} from './importer/importer.module';
 import {ServiceWorkerModule} from '@angular/service-worker';
 import {environment} from '../environments/environment';
 import { Maimai2UploadUserPortraitDialog } from './sega/maimai2/maimai2-setting/maimai2-upload-user-portrait/maimai2-upload-user-portrait.dialog';
+import {TranslateModule, TranslateLoader} from '@ngx-translate/core';
+import {TranslateHttpLoader} from '@ngx-translate/http-loader';
+
+export function createTranslateLoader(http: HttpClient) {
+  return new TranslateHttpLoader(http, '../assets/i18n/', '.json');
+}
 
 @NgModule({
   declarations: [
@@ -72,6 +78,13 @@ import { Maimai2UploadUserPortraitDialog } from './sega/maimai2/maimai2-setting/
     MatProgressBarModule,
     MatCardModule,
     MatDialogModule,
+    TranslateModule.forRoot({
+        loader: {
+          provide: TranslateLoader,
+          useFactory: (createTranslateLoader),
+          deps: [HttpClient]
+        }
+      }),
     ServiceWorkerModule.register('ngsw-worker.js', {enabled: environment.production})
   ],
   providers: [

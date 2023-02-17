@@ -5,6 +5,10 @@ import {Router} from '@angular/router';
 import {PreloadService} from './database/preload.service';
 import {Subscription} from 'rxjs';
 import {ApiService} from './api.service';
+import {TranslateService} from '@ngx-translate/core';
+import { CookieService } from 'ngx-cookie-service';
+import {MatSelectChange} from '@angular/material/select';
+import {SelectionChange} from '@angular/cdk/collections';
 
 @Component({
   selector: 'app-root',
@@ -20,42 +24,42 @@ export class AppComponent implements OnInit, OnChanges, OnDestroy {
   ongekiMenu: Menu[] = [
     {
       id: 0,
-      name: 'Profile',
+      name: 'label_profile',
       url: 'ongeki/profile'
     },
     {
       id: 1,
-      name: 'Battle Point',
+      name: 'label_battlePoint',
       url: 'ongeki/battle'
     },
     {
       id: 2,
-      name: 'Rating',
+      name: 'label_rating',
       url: 'ongeki/rating'
     },
     {
       id: 3,
-      name: 'Play Record',
+      name: 'label_playRecord',
       url: 'ongeki/recent'
     },
     {
       id: 4,
-      name: 'Music List',
+      name: 'label_musicList',
       url: 'ongeki/song'
     },
     {
       id: 5,
-      name: 'Card',
+      name: 'label_card',
       url: 'ongeki/card'
     },
     {
       id: 6,
-      name: 'Rival List',
+      name: 'label_rivalList',
       url: 'ongeki/rival'
     },
     {
       id: 7,
-      name: 'Setting',
+      name: 'label_setting',
       url: 'ongeki/setting'
     }
   ];
@@ -66,32 +70,32 @@ export class AppComponent implements OnInit, OnChanges, OnDestroy {
   v1Menus: Menu[] = [
     {
       id: 0,
-      name: 'Profile',
+      name: 'label_profile',
       url: 'chuni/v1/profile'
     },
     {
       id: 1,
-      name: 'Rating',
+      name: 'label_rating',
       url: 'chuni/v1/rating'
     },
     {
       id: 2,
-      name: 'Play Record',
+      name: 'label_playRecord',
       url: 'chuni/v1/recent'
     },
     {
       id: 3,
-      name: 'Music List',
+      name: 'label_musicList',
       url: 'chuni/v1/song'
     },
     {
       id: 4,
-      name: 'Character',
+      name: 'label_character',
       url: 'chuni/v1/character'
     },
     {
       id: 5,
-      name: 'Setting',
+      name: 'label_setting',
       url: 'chuni/v1/setting'
     }
   ];
@@ -99,37 +103,37 @@ export class AppComponent implements OnInit, OnChanges, OnDestroy {
   v2Menus: Menu[] = [
     {
       id: 0,
-      name: 'Profile',
+      name: 'label_profile',
       url: 'chuni/v2/profile'
     },
     {
       id: 1,
-      name: 'Rating',
+      name: 'label_rating',
       url: 'chuni/v2/rating'
     },
     {
       id: 2,
-      name: 'Play Record',
+      name: 'label_playRecord',
       url: 'chuni/v2/recent'
     },
     {
       id: 3,
-      name: 'Music List',
+      name: 'label_musicList',
       url: 'chuni/v2/song'
     },
     {
       id: 4,
-      name: 'Character',
+      name: 'label_character',
       url: 'chuni/v2/character'
     },
     {
       id: 5,
-      name: 'User Box',
+      name: 'label_userBox',
       url: 'chuni/v2/userbox'
     },
     {
       id: 6,
-      name: 'Setting',
+      name: 'label_setting',
       url: 'chuni/v2/setting'
     }
   ];
@@ -137,12 +141,12 @@ export class AppComponent implements OnInit, OnChanges, OnDestroy {
   mai2Menus: Menu[] = [
     {
       id: 0,
-      name: 'Profile',
+      name: 'label_profile',
       url: 'mai2/profile'
     },
     {
       id: 1,
-      name: 'Setting',
+      name: 'label_setting',
       url: 'mai2/setting'
     }
   ];
@@ -150,42 +154,42 @@ export class AppComponent implements OnInit, OnChanges, OnDestroy {
   divaMenus: Menu[] = [
     {
       id: 0,
-      name: 'Profile',
+      name: 'label_profile',
       url: 'diva/profile'
     },
     {
       id: 1,
-      name: 'Pv Record',
+      name: 'label_pvRecord',
       url: 'diva/record'
     },
     {
       id: 2,
-      name: 'Pv List',
+      name: 'label_pvList',
       url: 'diva/pv'
     },
     {
       id: 3,
-      name: 'Recent Play',
+      name: 'label_recentPlay',
       url: 'diva/recent'
     },
     {
       id: 4,
-      name: 'Setting',
+      name: 'label_setting',
       url: 'diva/setting'
     },
     {
       id: 5,
-      name: 'Management',
+      name: 'label_management',
       url: 'diva/management'
     },
     {
       id: 6,
-      name: 'Modules',
+      name: 'label_modules',
       url: 'diva/modules'
     },
     {
       id: 7,
-      name: 'Customizes',
+      name: 'label_customizes',
       url: 'diva/customizes'
     },
   ];
@@ -196,15 +200,22 @@ export class AppComponent implements OnInit, OnChanges, OnDestroy {
   constructor(
     changeDetectorRef: ChangeDetectorRef,
     media: MediaMatcher,
+    translate: TranslateService,
+    private cookies: CookieService,
     private authenticationService: AuthenticationService,
     private route: Router,
     private api: ApiService,
-    private preLoad: PreloadService
+    private preLoad: PreloadService,
   ) {
     this.mobileQuery = media.matchMedia('(max-width: 600px)');
     this._mobileQueryListener = () => changeDetectorRef.detectChanges();
     this.mobileQuery.addListener(this._mobileQueryListener);
     this.user = authenticationService.currentUserValue;
+    translate.addLangs(['zh-Hans', 'en']);
+    translate.setDefaultLang('en');
+    const selectedLanguage = cookies.get('currentLanguage');
+    const targetLanguage = selectedLanguage ?? 'en';
+    translate.use(targetLanguage);
   }
 
   ngOnInit(): void {
@@ -226,6 +237,11 @@ export class AppComponent implements OnInit, OnChanges, OnDestroy {
 
   logout() {
     this.authenticationService.logout();
+    location.reload();
+  }
+
+  onLanguageSelectionChanged(targetLanguage: string){
+    this.cookies.set('currentLanguage', targetLanguage);
     location.reload();
   }
 }

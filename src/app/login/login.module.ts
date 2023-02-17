@@ -7,18 +7,20 @@ import {AppRoutingModule} from '../app-routing.module';
 import {MatButtonModule} from '@angular/material/button';
 import {MatInputModule} from '@angular/material/input';
 import {MatCardModule} from '@angular/material/card';
+import {TranslateModule} from '@ngx-translate/core';
 
 @NgModule({
-  imports: [
-    LayoutModule,
-    FormsModule,
-    AppRoutingModule,
+    imports: [
+        LayoutModule,
+        FormsModule,
+        AppRoutingModule,
 
-    ReactiveFormsModule,
-    MatButtonModule,
-    MatInputModule,
-    MatCardModule,
-  ],
+        ReactiveFormsModule,
+        MatButtonModule,
+        MatInputModule,
+        MatCardModule,
+        TranslateModule,
+    ],
   exports: [],
   declarations: [LoginComponent],
   providers: [],
