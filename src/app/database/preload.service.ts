@@ -110,21 +110,21 @@ export class PreloadService {
       pageCount => {
         if (pageCount > 0) {
           //table is avaliable.
-          status.next('OK');
+          status.next('label_OK');
         } else {
           //test if table is avaliable.
           let callback = (error?: any) => {
             if (error != null) {
-              status.next('Error');
+              status.next('label_error');
               console.error(error);
             } else
-              status.next('OK');
+              status.next('label_OK');
 
             status.complete();
           }
 
           //fetch data and add into DB.
-          status.next('Downloading');
+          status.next('label_downloading');
           this.api.get(url, param).subscribe(
             data => this.dbService.bulkAdd<T>(storeName, data).subscribe(() => callback(), error => callback(error)),
             error => callback(error)
