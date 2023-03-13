@@ -5,6 +5,7 @@ import {MessageService} from '../../../../../message.service';
 import {Router} from '@angular/router';
 import {Contest} from '../../../model/mannagement/contest';
 import {DivaContestService} from '../diva-contest.service';
+import {AuthenticationService} from '../../../../../auth/authentication.service';
 
 @Component({
   selector: 'app-diva-contest-edit',
@@ -21,7 +22,8 @@ export class DivaContestEditComponent implements OnInit {
     private messageService: MessageService,
     private fb: FormBuilder,
     private contestService: DivaContestService,
-    private router: Router
+    private router: Router,
+    private auth: AuthenticationService
   ) {
   }
 
@@ -58,7 +60,7 @@ export class DivaContestEditComponent implements OnInit {
   }
 
   onSubmit() {
-    this.api.put('api/manage/diva/contest', this.contestForm.value).subscribe(
+    this.api.put('api/manage/diva/contest/' + this.auth.currentAccessCodeValue, this.contestForm.value).subscribe(
       data => {
         console.log(data);
         this.router.navigateByUrl('/diva/management/contest');

@@ -5,6 +5,7 @@ import {Festa, FestaKind} from '../../model/mannagement/Festa';
 import {DivaFestaService} from './diva-festa.service';
 import {Router} from '@angular/router';
 import {Difficulty} from '../../model/DivaPvRecord';
+import {AuthenticationService} from '../../../../auth/authentication.service';
 
 @Component({
   selector: 'app-diva-festa',
@@ -17,11 +18,13 @@ export class DivaFestaComponent implements OnInit {
   festaKind = FestaKind;
   difficulty = Difficulty;
 
+  accessCode: string;
   constructor(
     private api: ApiService,
     private messageService: MessageService,
     private festaService: DivaFestaService,
-    private router: Router
+    private router: Router,
+    private auth: AuthenticationService
   ) {
   }
 
@@ -37,7 +40,7 @@ export class DivaFestaComponent implements OnInit {
   }
 
   delete(id) {
-    this.api.delete('api/manage/diva/festa/' + id).subscribe(
+    this.api.delete('api/manage/diva/festa/' + id + '/' + this.auth.currentAccessCodeValue).subscribe(
       () => {
         this.messageService.notice('OK');
         this.load();

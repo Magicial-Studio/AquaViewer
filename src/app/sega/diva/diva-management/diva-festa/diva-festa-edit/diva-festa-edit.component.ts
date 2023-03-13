@@ -5,6 +5,7 @@ import {DivaFestaService} from '../diva-festa.service';
 import {Festa} from '../../../model/mannagement/Festa';
 import {Router} from '@angular/router';
 import {MessageService} from '../../../../../message.service';
+import {AuthenticationService} from '../../../../../auth/authentication.service';
 
 @Component({
   selector: 'app-diva-festa-edit',
@@ -21,7 +22,8 @@ export class DivaFestaEditComponent implements OnInit {
     private messageService: MessageService,
     private fb: FormBuilder,
     private festaService: DivaFestaService,
-    private router: Router
+    private router: Router,
+    private authService: AuthenticationService
   ) {
   }
 
@@ -48,7 +50,7 @@ export class DivaFestaEditComponent implements OnInit {
   }
 
   onSubmit() {
-    this.api.put('api/manage/diva/festa', this.festaForm.value).subscribe(
+    this.api.put('api/manage/diva/festa/' + this.authService.currentAccessCodeValue, this.festaForm.value).subscribe(
       data => {
         console.log(data);
         this.router.navigateByUrl('/diva/management/festa');
