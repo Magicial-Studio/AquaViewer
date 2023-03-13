@@ -2,6 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {ApiService} from '../../../../api.service';
 import {MessageService} from '../../../../message.service';
+import {AuthenticationService} from '../../../../auth/authentication.service';
 
 @Component({
   selector: 'app-diva-news',
@@ -17,6 +18,7 @@ export class DivaNewsComponent implements OnInit {
     private api: ApiService,
     private messageService: MessageService,
     private fb: FormBuilder,
+    private auth: AuthenticationService
   ) {
   }
 
@@ -46,14 +48,14 @@ export class DivaNewsComponent implements OnInit {
   }
 
   submitNews() {
-    this.api.put('api/manage/diva/news', this.newsForm.value).subscribe(
+    this.api.put('api/manage/diva/news/' + this.auth.currentAccessCodeValue, this.newsForm.value).subscribe(
       data => this.createNews(data),
       error => this.messageService.notice(error)
     );
   }
 
   submitWarning() {
-    this.api.put('api/manage/diva/warning', this.newsForm.value).subscribe(
+    this.api.put('api/manage/diva/warning/' + this.auth.currentAccessCodeValue, this.newsForm.value).subscribe(
       data => this.createWarning(data),
       error => this.messageService.notice(error)
     );

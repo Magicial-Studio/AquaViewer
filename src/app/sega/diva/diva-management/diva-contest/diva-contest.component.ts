@@ -4,6 +4,7 @@ import {MessageService} from '../../../../message.service';
 import {Router} from '@angular/router';
 import {DivaContestService} from './diva-contest.service';
 import {Contest, ContestLeague, ContestNormaType, ContestStageLimit} from '../../model/mannagement/contest';
+import {AuthenticationService} from '../../../../auth/authentication.service';
 
 @Component({
   selector: 'app-diva-contest',
@@ -21,7 +22,8 @@ export class DivaContestComponent implements OnInit {
     private api: ApiService,
     private messageService: MessageService,
     private contestService: DivaContestService,
-    private router: Router
+    private router: Router,
+    private auth: AuthenticationService
   ) {
   }
 
@@ -37,7 +39,7 @@ export class DivaContestComponent implements OnInit {
   }
 
   delete(id) {
-    this.api.delete('api/manage/diva/contest/' + id).subscribe(
+    this.api.delete('api/manage/diva/contest/' + id + '/' + this.auth.currentAccessCodeValue).subscribe(
       () => {
         this.messageService.notice('OK');
         this.load();
