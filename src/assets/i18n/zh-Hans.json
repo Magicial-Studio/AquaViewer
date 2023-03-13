@@ -19,7 +19,7 @@
   "label_customizes":"饰品列表",
   "label_dashboard":"服务器状态",
   "label_import":"导入游戏数据",
-  "label_import":"Import",
+  "label_import":"导入数据",
   "label_changeLog": "Changelog",
   "label_status": "Status",
   "label_dashboardIntro":"Welcome to Aqua Viewer, the web interface for Aqua server.",

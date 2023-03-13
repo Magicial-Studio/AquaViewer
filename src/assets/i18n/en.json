@@ -81,5 +81,9 @@
   "label_newRecord": "NEW RECORD",
   "label_justiceC.": "JUSTICE C.",
   "label_tap": "TAP",
-
+  "label_justice": "JUSTICE",
+  "label_hold": "HOLD",
+  "label_attack": "ATTACK",
+  "label_slide": "SLIDE",
+  "label_miss": "MISS"
 }
